@@ -165,6 +165,23 @@
             padding: 15px 20px;
         }
 
+        /* 汉堡菜单按钮 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px;
+            background: #ccc;
+        }
+
+        .menu-toggle span {
+            background: white;
+            height: 3px;
+            width: 25px;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .features {
@@ -178,21 +195,46 @@
             .subtitle {
                 font-size: 1rem;
             }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .navbar a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <a href="#screen1">产品介绍</a>
         <a href="#screen2">功能特点</a>
         <a href="#screen3">更多内容</a>
     </div>
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="screen-container">
         <!-- 第一屏 - 产品介绍 -->
         <div class="screen" id="screen1">
-            	<img src="./logo.jpg" alt="TrialQ Logo" class="logo">
+            <img src="./logo.jpg" alt="TrialQ Logo" class="logo">
             <h1 class="title">TrialQ - 临床医疗数据分析平台</h1>
             <p class="subtitle">
                 基于人工智能和大数据技术，为临床试验提供全面的数据分析解决方案。
@@ -237,6 +279,9 @@
     <script>
         // 导航栏点击跳转
         const navLinks = document.querySelectorAll('.navbar a');
+        const navbar = document.getElementById('navbar');
+        const menuToggle = document.getElementById('menuToggle');
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -245,7 +290,16 @@
                 if (targetScreen) {
                     targetScreen.scrollIntoView({ behavior: 'smooth' });
                 }
+                // 在移动设备上点击后关闭菜单
+                if (window.innerWidth <= 768) {
+                    navbar.classList.remove('active');
+                }
             });
+        });
+
+        // 汉堡菜单点击事件
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
         });
 
         // 键盘方向键控制滚动
