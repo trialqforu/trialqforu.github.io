@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrialQ - 临床医疗数据分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        /* 全屏容器 */
+        .screen-container {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* 单屏样式 */
+        .screen {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* 背景动画 */
+        .screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            z-index: -1;
+            animation: bgAnimation 10s infinite alternate;
+        }
+
+        @keyframes bgAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* 第一屏 - 产品介绍 */
+        #screen1 {
+            background: #070c20;
+            color: white;
+        }
+
+        .logo {
+            width: 240px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1s; /* 适当调整延迟时间 */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 第二屏 - 功能特点 */
+        #screen2 {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* 第三屏 - 新增内容示例 */
+        #screen3 {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            color: white;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <a href="#screen1">产品介绍</a>
+        <a href="#screen2">功能特点</a>
+        <a href="#screen3">更多内容</a>
+    </div>
+    <div class="screen-container">
+        <!-- 第一屏 - 产品介绍 -->
+        <div class="screen" id="screen1">
+            	<img src="./logo.jpg" alt="TrialQ Logo" class="logo">
+            <h1 class="title">TrialQ - 临床医疗数据分析平台</h1>
+            <p class="subtitle">
+                基于人工智能和大数据技术，为临床试验提供全面的数据分析解决方案。
+                从数据采集、清洗到深度分析，TrialQ 帮助您更快、更准确地获得研究结果。
+            </p>
+        </div>
+
+        <!-- 第二屏 - 功能特点 -->
+        <div class="screen" id="screen2">
+            <h2 class="title">核心功能</h2>
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">智能数据分析</h3>
+                    <p class="feature-desc">
+                        采用机器学习算法，自动识别数据模式，提供深入的统计分析
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">数据安全</h3>
+                    <p class="feature-desc">
+                        符合 HIPAA 和 GDPR 标准，确保患者数据隐私和安全
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">实时监控</h3>
+                    <p class="feature-desc">
+                        实时跟踪临床试验进展，及时发现问题并预警
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三屏 - 新增内容示例 -->
+        <div class="screen" id="screen3">
+            <h2 class="title">更多精彩内容</h2>
+            <p class="subtitle">敬请期待！</p>
+        </div>
+    </div>
+    <script>
+        // 导航栏点击跳转
+        const navLinks = document.querySelectorAll('.navbar a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetScreen = document.getElementById(targetId);
+                if (targetScreen) {
+                    targetScreen.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 键盘方向键控制滚动
+        window.addEventListener('keydown', (e) => {
+            const screens = document.querySelectorAll('.screen');
+            const currentScreenIndex = Array.from(screens).findIndex(screen => {
+                const rect = screen.getBoundingClientRect();
+                return rect.top >= 0 && rect.top < window.innerHeight;
+            });
+
+            if (e.key === 'ArrowDown' && currentScreenIndex < screens.length - 1) {
+                screens[currentScreenIndex + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentScreenIndex > 0) {
+                screens[currentScreenIndex - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+
+</html>
