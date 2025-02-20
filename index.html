@@ -146,6 +146,12 @@
             color: white;
         }
 
+        /* 第四屏 - 联系我们 */
+        #screen4 {
+            background: #070c20;
+            color: white;
+        }
+
         /* 导航栏样式 */
         .navbar {
             position: fixed;
@@ -171,7 +177,7 @@
             flex-direction: column;
             cursor: pointer;
             padding: 15px;
-            background: #ccc;
+
         }
 
         .menu-toggle span {
@@ -224,7 +230,8 @@
     <div class="navbar" id="navbar">
         <a href="#screen1">产品介绍</a>
         <a href="#screen2">功能特点</a>
-        <a href="#screen3">更多内容</a>
+        <a href="#screen3">未来值得期待</a>
+        <a href="#screen4">联系我们</a>
     </div>
     <div class="menu-toggle" id="menuToggle">
         <span></span>
@@ -237,8 +244,9 @@
             <img src="./logo.jpg" alt="TrialQ Logo" class="logo">
             <h1 class="title">TrialQ - 临床医疗数据分析平台</h1>
             <p class="subtitle">
-                基于人工智能和大数据技术，为临床试验提供全面的数据分析解决方案。
-                从数据采集、清洗到深度分析，TrialQ 帮助您更快、更准确地获得研究结果。
+                未来我们将基于人工智能和大数据技术，为临床试验项目管理提供全面的数据分析解决方案。
+                从数据采集、清洗到深度分析，TrialQ 帮助您更快、更准确地获得项目情况，自动识别风险，
+                做好你个人项目管理的助手。
             </p>
         </div>
 
@@ -248,16 +256,16 @@
             <div class="features">
                 <div class="feature-item">
                     <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">智能数据分析</h3>
+                    <h3 class="feature-title">简单好用的数据分析</h3>
                     <p class="feature-desc">
-                        采用机器学习算法，自动识别数据模式，提供深入的统计分析
+                        目前我们支持Medidata的EDC平台，可提供主流平台统计分析，未来还将支持更多平台。 
                     </p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🔒</div>
                     <h3 class="feature-title">数据安全</h3>
                     <p class="feature-desc">
-                        符合 HIPAA 和 GDPR 标准，确保患者数据隐私和安全
+                        本地化部署，数据存储在本地，确保项目数据隐私和安全
                     </p>
                 </div>
                 <div class="feature-item">
@@ -272,8 +280,14 @@
 
         <!-- 第三屏 - 新增内容示例 -->
         <div class="screen" id="screen3">
-            <h2 class="title">更多精彩内容</h2>
-            <p class="subtitle">敬请期待！</p>
+            <h2 class="title">更多精彩内容，值得期待！</h2>
+        </div>
+
+        <!-- 第四屏 - 联系我们 -->
+        <div class="screen" id="screen4">
+            <h2 class="title">联系我们</h2>
+            <p>如果您有任何问题或建议，欢迎通过以下邮箱联系我们：</p>
+            <a href="mailto:trialqforu@gmail.com" style="color: #1a73e8; font-size: 1.2rem; margin-top: 20px;">trialqforu@gmail.com</a>
         </div>
     </div>
     <script>
